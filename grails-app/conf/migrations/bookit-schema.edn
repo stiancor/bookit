@@ -1,0 +1,62 @@
+[
+ ;; user
+
+{:db/id #db/id[:db.part/db]
+:db/ident :user/username
+:db/valueType :db.type/string
+:db/cardinality :db.cardinality/one
+:db/fulltext true
+:db/doc "Users username"
+:db.install/_attribute :db.part/db}
+
+{:db/id #db/id[:db.part/db]
+:db/ident :user/fullname
+:db/valueType :db.type/string
+:db/cardinality :db.cardinality/one
+:db/fulltext true
+:db/doc "Full name of user"
+:db.install/_attribute :db.part/db}
+
+{:db/id #db/id[:db.part/db]
+:db/ident :user/phone
+:db/valueType :db.type/string
+:db/cardinality :db.cardinality/one
+:db/doc "Users phonenumber"
+:db.install/_attribute :db.part/db}
+
+{:db/id #db/id[:db.part/db]
+:db/ident :user/password
+:db/valueType :db.type/string
+:db/cardinality :db.cardinality/one
+:db/doc "Password. Obviously not in clear text!"
+:db.install/_attribute :db.part/db}
+
+{:db/id #db/id[:db.part/db]
+:db/ident :user/enabled
+:db/valueType :db.type/boolean
+:db/cardinality :db.cardinality/one
+:db/doc "Is the user enabled?"
+:db.install/_attribute :db.part/db}
+
+{:db/id #db/id[:db.part/db]
+:db/ident :user/accountExpired
+:db/valueType :db.type/boolean
+:db/cardinality :db.cardinality/one
+:db/doc "Has the account expired?"
+:db.install/_attribute :db.part/db}
+
+{:db/id #db/id[:db.part/db]
+:db/ident :user/accountLocked
+:db/valueType :db.type/boolean
+:db/cardinality :db.cardinality/one
+:db/doc "Is account locked?"
+:db.install/_attribute :db.part/db}
+
+{:db/id #db/id[:db.part/db]
+:db/ident :user/passwordExpired
+:db/valueType :db.type/boolean
+:db/cardinality :db.cardinality/one
+:db/doc "Has password expired?"
+:db.install/_attribute :db.part/db}
+
+]
