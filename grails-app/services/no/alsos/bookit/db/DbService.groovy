@@ -6,10 +6,10 @@ import datomic.Connection
 
 class DbService {
 
-    public static final String dbUri = "datomic:mem://localhost:4334/bookit"
+    public static final String DB_URI = "datomic:mem://localhost:4334/bookit"
 
     Connection getConn() {
-        Peer.connect(dbUri)
+        Peer.connect(DB_URI)
     }
 
     Database getDb() {
