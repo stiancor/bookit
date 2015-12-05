@@ -28,7 +28,5 @@ class Role implements Serializable {
 		authority blank: false, unique: true
 	}
 
-	static mapping = {
-		cache true
-	}
+
 }

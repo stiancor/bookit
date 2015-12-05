@@ -5,15 +5,16 @@ class User implements Serializable {
 	transient springSecurityService
 
 	String username
+	String fullName
 	String password
 	boolean enabled = true
 	boolean accountExpired
 	boolean accountLocked
 	boolean passwordExpired
 
-	User(String username, String password) {
-//		this()
+	User(String username, String fullName, String password) {
 		this.username = username
+		this.fullName = fullName
 		this.password = password
 	}
 
