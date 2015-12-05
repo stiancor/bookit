@@ -2,15 +2,22 @@
  ;; user
 
 {:db/id #db/id[:db.part/db]
-:db/ident :user/username
-:db/valueType :db.type/string
+:db/ident :user/publicId
+:db/valueType :db.type/uuid
 :db/cardinality :db.cardinality/one
-:db/fulltext true
-:db/doc "Users username"
+:db/unique :db.unique/identity
+:db/doc "UUID for user entity"
 :db.install/_attribute :db.part/db}
 
 {:db/id #db/id[:db.part/db]
-:db/ident :user/fullname
+:db/ident :user/email
+:db/valueType :db.type/string
+:db/cardinality :db.cardinality/one
+:db/doc "Users email"
+:db.install/_attribute :db.part/db}
+
+{:db/id #db/id[:db.part/db]
+:db/ident :user/fullName
 :db/valueType :db.type/string
 :db/cardinality :db.cardinality/one
 :db/fulltext true
@@ -21,7 +28,7 @@
 :db/ident :user/phone
 :db/valueType :db.type/string
 :db/cardinality :db.cardinality/one
-:db/doc "Users phonenumber"
+:db/doc "Users phone number"
 :db.install/_attribute :db.part/db}
 
 {:db/id #db/id[:db.part/db]
@@ -57,6 +64,29 @@
 :db/valueType :db.type/boolean
 :db/cardinality :db.cardinality/one
 :db/doc "Has password expired?"
+:db.install/_attribute :db.part/db}
+
+{:db/id #db/id[:db.part/db]
+:db/ident :user/role
+:db/valueType :db.type/ref
+:db/cardinality :db.cardinality/many
+:db/doc "Role reference"
+:db.install/_attribute :db.part/db}
+
+;; Role
+
+{:db/id #db/id[:db.part/db]
+:db/ident :role/publicId
+:db/valueType :db.type/uuid
+:db/cardinality :db.cardinality/one
+:db/doc "UUID for role entity"
+:db.install/_attribute :db.part/db}
+
+{:db/id #db/id[:db.part/db]
+:db/ident :role/authority
+:db/valueType :db.type/string
+:db/cardinality :db.cardinality/one
+:db/doc "Authority for role entity"
 :db.install/_attribute :db.part/db}
 
 ]
