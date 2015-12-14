@@ -57,10 +57,9 @@ dependencies {
     compile "org.grails:grails-dependencies"
     compile "org.grails:grails-web-boot"
 
-    compile 'org.grails.plugins:spring-security-core:3.0.0.M2'
+    compile 'org.grails.plugins:spring-security-core:3.0.0'
 
     compile "org.grails.plugins:cache"
-    compile "org.grails.plugins:scaffolding"
 
     compile("com.datomic:datomic-free:0.9.5327") {
         exclude group: 'com.amazonaws'
