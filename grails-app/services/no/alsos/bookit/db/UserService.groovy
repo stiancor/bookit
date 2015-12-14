@@ -15,12 +15,18 @@ class UserService {
                                          ':user/email'   : username,
                                          ':user/password': encodePassword(password),
                                          ':user/fullName': fullName,
-                                         ':user/phone'   : phone]]).get()
+                                         ':user/phone'   : phone,
+                                         ':user/enabled' : true   ]]).get()
         pubId
     }
 
     def getUser(String id) {
-        def entityId = Peer.q("""[:find ?e :in \$ ?publicId :where [?e :user/publicId ?publicId]]""", dbService.db, UUID.fromString(id)).iterator().next().get(0)
+        def entityId = Peer.q("[:find ?e :in \$ ?publicId :where [?e :user/publicId ?publicId]]", dbService.db, UUID.fromString(id)).iterator().next().get(0)
+        dbService.db.entity(entityId)
+    }
+
+    def findUser(String email) {
+        def entityId = Peer.q("[:find ?e :in \$ ?email :where [?e :user/email ?email]]", dbService.db, email).iterator().next().get(0)
         dbService.db.entity(entityId)
     }
 
