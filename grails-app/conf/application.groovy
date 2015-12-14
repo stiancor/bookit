@@ -1,8 +1,5 @@
 // Added by the Spring Security Core plugin:
 grails.plugin.springsecurity.password.algorithm = 'bcrypt'
-//grails.plugin.springsecurity.userLookup.userDomainClassName = 'no.alsos.bookit.User'
-//grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'no.alsos.bookit.UserRole'
-//grails.plugin.springsecurity.authority.className = 'no.alsos.bookit.Role'
 grails.plugins.springsecurity.providerNames = ['bookitAuthenticationProvider','anonymousAuthenticationProvider','rememberMeAuthenticationProvider' ]
 grails.plugin.springsecurity.securityConfigType = "InterceptUrlMap"
 grails.plugin.springsecurity.interceptUrlMap = [
