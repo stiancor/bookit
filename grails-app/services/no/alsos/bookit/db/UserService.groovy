@@ -16,7 +16,7 @@ class UserService {
                                          ':user/password': encodePassword(password),
                                          ':user/fullName': fullName,
                                          ':user/phone'   : phone,
-                                         ':user/enabled' : true   ]]).get()
+                                         ':user/enabled' : true]]).get()
         pubId
     }
 
@@ -25,9 +25,10 @@ class UserService {
         dbService.db.entity(entityId)
     }
 
-    def findUser(String email) {
-        def entityId = Peer.q("[:find ?e :in \$ ?email :where [?e :user/email ?email]]", dbService.db, email).iterator().next().get(0)
-        dbService.db.entity(entityId)
+    def findByEmail(String email) {
+        def result = Peer.q("[:find ?e :in \$ ?email :where [?e :user/email ?email]]", dbService.db, email)
+        if (result.empty) return [:]
+        dbService.db.entity(result.iterator().next().get(0))
     }
 
     def updateUser(String userId, String fullName, String phone) {
@@ -41,7 +42,7 @@ class UserService {
                                   ':user/password': encodePassword(password)]])
     }
 
-    protected String encodePassword(String password) {
+    String encodePassword(String password) {
         springSecurityService?.passwordEncoder ? springSecurityService.encodePassword(password) : password
     }
 

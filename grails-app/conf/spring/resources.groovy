@@ -1,3 +1,5 @@
+package spring
+
 import no.alsos.bookit.security.BookitUserDetailsService
 import no.alsos.bookit.security.auth.BookitAuthenticationProvider
 
@@ -8,6 +10,7 @@ beans = {
     }
 
     bookitAuthenticationProvider(BookitAuthenticationProvider) {
-
+        userService = ref('userService')
+        bookitUserDetailsService = ref('userDetailsService')
     }
 }

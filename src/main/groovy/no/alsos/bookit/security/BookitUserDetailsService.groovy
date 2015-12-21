@@ -24,17 +24,16 @@ class BookitUserDetailsService implements GrailsUserDetailsService {
     }
 
     UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // TODO: Fix this
-        Map user = userService.findByUsername(username)
-        if (!user) throw new NoStackUsernameNotFoundException()
+        def user = userService.findByEmail(username)
+        if (user.get(':user/email') != username) throw new NoStackUsernameNotFoundException()
 
         def authorities = user.authorities.collect {
             new SimpleGrantedAuthority(it.authority)
         }
 
-        return new BookitGrailsUser(user.email, user.password, user.enabled,
-                !user.accountExpired, !user.passwordExpired,
-                !user.accountLocked, authorities ?: NO_ROLES, user.id,
-                user.firstName + " " + user.lastName)
+        return new BookitGrailsUser(user.get(':user/email'), user.get(':user/password'), user.get(':user/enabled'),
+                user.get(':user/accountExpired'), user.get(':user/passwordExpired'),
+                user.get(':user/accountLocked'), authorities ?: NO_ROLES, user.get(':user/publicId'),
+                user.get(':user/fullName'))
     }
 }
