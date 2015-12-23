@@ -15,8 +15,7 @@ class BookitAuthenticationProvider extends AbstractUserDetailsAuthenticationProv
 
     @Override
     protected void additionalAuthenticationChecks(UserDetails userDetails, UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
-        Map user = userService.findByEmail(authentication.principal)
-        if(user.isEmpty() || user.get(':user/password') != userService.encodePassword(authentication.credentials))
+        if(userDetails.password != userService.encodePassword(authentication.credentials))
             throw new BadCredentialsException(messages.getMessage("AbstractUserDetailsAuthenticationProvider.badCredentials", "Bad credentials"), userDetails)
         logger.debug "User $authentication.principal authenticated"
     }
@@ -35,8 +34,4 @@ class BookitAuthenticationProvider extends AbstractUserDetailsAuthenticationProv
         bookitUserDetailsService.loadUserByUsername(username)
     }
 
-//    @Override
-//    boolean supports(Class<?> authentication) {
-//        return true
-//    }
 }
