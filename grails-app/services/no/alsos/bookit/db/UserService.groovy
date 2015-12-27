@@ -21,8 +21,7 @@ class UserService {
     }
 
     def getUser(String id) {
-        def entityId = Peer.q("[:find ?e :in \$ ?publicId :where [?e :user/publicId ?publicId]]", dbService.db, UUID.fromString(id)).iterator().next().get(0)
-        dbService.db.entity(entityId)
+        dbService.db.entity([':user/publicId', UUID.fromString(id)])
     }
 
     def findByEmail(String email) {
