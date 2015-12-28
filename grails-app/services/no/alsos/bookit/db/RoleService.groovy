@@ -10,7 +10,6 @@ class RoleService {
         def pubId = Peer.squuid()
         dbService.conn.transact([[
                                          ':db/id'        : Peer.tempid(":db.part/user"),
-                                         ':role/publicId': pubId,
                                          ':role/authority': roleName
                                          ]]).get()
         pubId

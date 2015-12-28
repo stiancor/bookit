@@ -73,20 +73,11 @@
 :db/doc "Role reference"
 :db.install/_attribute :db.part/db}
 
-;; Role
-
 {:db/id #db/id[:db.part/db]
-:db/ident :role/publicId
-:db/valueType :db.type/uuid
-:db/cardinality :db.cardinality/one
-:db/doc "UUID for role entity"
-:db.install/_attribute :db.part/db}
-
-{:db/id #db/id[:db.part/db]
-:db/ident :role/authority
+:db/ident :user/authority
 :db/valueType :db.type/string
-:db/cardinality :db.cardinality/one
-:db/doc "Authority for role entity"
+:db/cardinality :db.cardinality/many
+:db/doc "User role"
 :db.install/_attribute :db.part/db}
 
 ]

@@ -3,6 +3,7 @@ grails.plugin.springsecurity.providerNames = ['bookitAuthenticationProvider','an
 grails.plugin.springsecurity.securityConfigType = "InterceptUrlMap"
 grails.plugin.springsecurity.interceptUrlMap = [
 		[pattern: '/',               access: ['permitAll']],
+		[pattern: '/test/**',        access: ["hasRole('ROLE_USER')"]],
 		[pattern: '/user/**',	     access: ['permitAll']],
 		[pattern: '/error',          access: ['permitAll']],
 		[pattern: '/index',          access: ['permitAll']],

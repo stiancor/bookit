@@ -10,7 +10,7 @@ beans = {
     }
 
     bookitAuthenticationProvider(BookitAuthenticationProvider) {
-        userService = ref('userService')
         bookitUserDetailsService = ref('userDetailsService')
+        passwordEncoder = ref('passwordEncoder')
     }
 }
