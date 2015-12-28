@@ -14,9 +14,9 @@ class BootStrap {
         List schemaTx = Util.readAll(schemaRdr).get(0)
         conn.transact(schemaTx).get()
 
-//        roleService.create('ROLE_USER')
-//        roleService.create('ROLE_BETA')
-//        roleService.create('ROLE_ADMIN')
+        roleService.create('ROLE_USER')
+        roleService.create('ROLE_BETA')
+        roleService.create('ROLE_ADMIN')
     }
 
     def destroy = {

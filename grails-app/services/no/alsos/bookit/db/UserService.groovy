@@ -9,7 +9,6 @@ class UserService {
 
     def createUser(String username, String fullName, String phone, String password) {
         def pubId = Peer.squuid()
-//        def authority = dbService.db.entity([':role/authority', 'ROLE_USER'])
         dbService.conn.transact([[
                                          ':db/id'               : Peer.tempid(":db.part/user"),
                                          ':user/publicId'       : pubId,
@@ -21,7 +20,8 @@ class UserService {
                                          ':user/accountExpired' : false,
                                          ':user/passwordExpired': false,
                                          ':user/accountLocked'  : false,
-                                         ':user/authority'      : ['ROLE_USER']]]).get()
+                                         ':user/role'           : [':role/authority': 'ROLE_USER']
+                                 ]]).get()
         pubId
     }
 

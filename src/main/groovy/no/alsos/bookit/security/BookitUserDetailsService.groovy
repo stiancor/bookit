@@ -27,9 +27,7 @@ class BookitUserDetailsService implements GrailsUserDetailsService {
         def user = userService.findByEmail(username)
         if (user.get(':user/email') != username) throw new NoStackUsernameNotFoundException()
 
-        def authorities = user.get(':user/authority').collect {
-            new SimpleGrantedAuthority(it)
-        }
+        def authorities = user.get(':user/role').iterator().collect {new SimpleGrantedAuthority(it.get(':role/authority').first())}
 
         return new BookitGrailsUser(user.get(':user/email'), user.get(':user/password'), user.get(':user/enabled'),
                 !user.get(':user/accountExpired'), !user.get(':user/passwordExpired'),

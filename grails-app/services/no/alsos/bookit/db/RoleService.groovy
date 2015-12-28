@@ -9,9 +9,9 @@ class RoleService {
     def create(String roleName) {
         def pubId = Peer.squuid()
         dbService.conn.transact([[
-                                         ':db/id'        : Peer.tempid(":db.part/user"),
+                                         ':db/id'         : Peer.tempid(":db.part/user"),
                                          ':role/authority': roleName
-                                         ]]).get()
+                                 ]]).get()
         pubId
     }
 }

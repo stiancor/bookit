@@ -73,10 +73,13 @@
 :db/doc "Role reference"
 :db.install/_attribute :db.part/db}
 
+;; Role
+
 {:db/id #db/id[:db.part/db]
-:db/ident :user/authority
+:db/ident :role/authority
 :db/valueType :db.type/string
 :db/cardinality :db.cardinality/many
+:db/unique :db.unique/identity
 :db/doc "User role"
 :db.install/_attribute :db.part/db}
 
