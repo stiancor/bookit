@@ -30,9 +30,7 @@ class UserService {
     }
 
     def findByEmail(String email) {
-        def result = Peer.query("[:find ?e . :in \$ ?email :where [?e :user/email ?email]]", dbService.db, email)
-        if (!result) return [:]
-        dbService.db.entity(result)
+        dbService.db.entity([':user/email', email]) ?: [:]
     }
 
     def updateUser(String userId, String fullName, String phone) {
