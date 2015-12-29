@@ -7,7 +7,7 @@ class UserController {
     def create() {}
 
     def insert() {
-        log.info("Trying to create new user with emaiL: ${params.email}")
+        log.info("Trying to create new user with email: ${params.email}")
         def pubId = userService.createUser(params.email, params.fullName, params.phone, params.password)
         redirect(action: 'show', id: pubId)
     }
