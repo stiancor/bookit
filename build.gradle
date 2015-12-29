@@ -63,6 +63,7 @@ dependencies {
 
     compile("com.datomic:datomic-free:0.9.5327") {
         exclude group: 'com.amazonaws'
+        exclude module: 'slf4j-nop'
     }
 
     runtime "org.grails.plugins:asset-pipeline"
