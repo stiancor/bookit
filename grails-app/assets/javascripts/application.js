@@ -7,6 +7,7 @@
 //
 //= require jquery-2.1.3.js
 //= require bootstrap-3.3.6/js/bootstrap
+//= require react-0.14.5
 //= require_tree .
 //= require_self
 
