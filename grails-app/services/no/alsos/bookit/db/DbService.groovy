@@ -6,10 +6,10 @@ import datomic.Connection
 
 class DbService {
 
-    public static final String DB_URI = "datomic:mem://localhost:4334/bookit"
+    def grailsApplication
 
     Connection getConn() {
-        Peer.connect(DB_URI)
+        Peer.connect(grailsApplication.config.getProperty('db.url'))
     }
 
     Database getDb() {
