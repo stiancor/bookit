@@ -13,8 +13,4 @@ class RoleService {
                                  ]]).get()
     }
 
-    def addRole(String userPublicId, role) {
-        def userId = Peer.query("[:find ?id . :where [?id :user/publicId ?publicId]]", dbService.db, UUID.fromString(userPublicId))
-        dbService.conn.transact([[':db/id': userId, ':user/role': [':role/authority': role]]]).get()
-    }
 }

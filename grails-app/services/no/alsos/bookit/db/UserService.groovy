@@ -33,6 +33,11 @@ class UserService {
         dbService.db.entity([':user/email', email]) ?: [:]
     }
 
+    def addRole(String userPublicId, role) {
+        def userId = Peer.query("[:find ?id . :where [?id :user/publicId ?publicId]]", dbService.db, UUID.fromString(userPublicId))
+        dbService.conn.transact([[':db/id': userId, ':user/role': [':role/authority': role]]]).get()
+    }
+
     def updateUser(String userId, String fullName, String phone) {
         dbService.conn.transact([[':db/id'        : userId,
                                   ':user/fullName': fullName,
